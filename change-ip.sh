@@ -9,7 +9,6 @@
 # sudo ./change-ip.sh 192.168.1.100 255.255.255.0 192.168.1.1 1.1.1.1 ens3
 # ------------------------------------------------------------------------------
 
-# Check if the script is run as root
 if [ "$EUID" -ne 0 ]; then
   echo "Please run as root"
   exit 1
@@ -76,7 +75,6 @@ network:
           - ${DNS}
 EOF
 
-# Apply the new Netplan configuration
 echo "Applying new IP configuration for interface ${INTERFACE}..."
 netplan apply
 
