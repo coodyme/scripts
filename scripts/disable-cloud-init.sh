@@ -31,7 +31,18 @@ sudo rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
 
 sudo cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
 
+echo "Write file to disable cloud-init network configuration..."
+sudo mkdir -p /etc/cloud/cloud.cfg.d/
+echo "network: {config: disabled}" | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg > /dev/null
+
 echo "Cloud-init has been disabled. Please reboot your system for all changes to take effect."
 
 echo "Press Y to reboot now, or any other key to exit."
 read -r -n 1 -s key
+
+if [ "$key" = "Y" ] || [ "$key" = "y" ]; then
+  sudo reboot
+else
+  echo "Exiting without rebooting."
+  exit 0
+fi

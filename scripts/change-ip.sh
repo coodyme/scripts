@@ -52,11 +52,11 @@ mask_to_cidr() {
 
 CIDR=$(mask_to_cidr "$SUBNET_MASK")
 
-# Define Netplan configuration file path
 NETPLAN_FILE="/etc/netplan/01-netcfg.yaml"
-
-# Backup the existing Netplan configuration
-cp $NETPLAN_FILE ${NETPLAN_FILE}.bak
+if [ -f $NETPLAN_FILE ]; then
+  echo "Netplan configuration file found: $NETPLAN_FILE"
+  cp $NETPLAN_FILE ${NETPLAN_FILE}.bak
+fi
 
 # Write the new Netplan configuration
 cat <<EOF >$NETPLAN_FILE
@@ -89,3 +89,10 @@ fi
 
 echo "Press Y to reboot now, or any other key to exit."
 read -r -n 1 -s key
+
+if [ "$key" = "Y" ] || [ "$key" = "y" ]; then
+  sudo reboot
+else
+  echo "Exiting without rebooting."
+  exit 0
+fi
