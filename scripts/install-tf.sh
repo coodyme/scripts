@@ -1,13 +1,17 @@
 #!/bin/bash
 
-# This script installs the AWS CLI v2 on Ubuntu and configures the AWS environment.
+# This script installs the Terraform CLI.
 # ------------------------------------------------------------------------------
 # How to use:
-# 1. Save this script to a file (e.g., install-aws.sh)
-# 2. Make the script executable with the command: chmod +x install-aws.sh
-# 3. Run the script with root privileges: sudo ./install-aws.sh
+# 1. Save this script to a file (e.g., install-tf.sh)
+# 2. Make the script executable with the command: chmod +x install-tf.sh
+# 3. Run the script with root privileges: sudo ./install-tf.sh
 # ------------------------------------------------------------------------------
 
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
 
 echo "Updating package list..."
 sudo apt update -y

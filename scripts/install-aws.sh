@@ -8,10 +8,13 @@
 # 3. Run the script with root privileges: sudo ./install-aws.sh
 # ------------------------------------------------------------------------------
 
-# Define the shell profile
 SHELL_PROFILE="$HOME/.zshrc"
 
-# Function to install AWS CLI
+if [ "$EUID" -ne 0 ]; then
+  echo "Please run as root"
+  exit 1
+fi
+
 install() {
     echo "Updating package list and installing prerequisites..."
     sudo apt update -y && sudo apt upgrade -y
@@ -84,7 +87,6 @@ add_profile() {
     echo "To use it, run AWS CLI commands with: --profile $PROFILE_NAME"
 }
 
-# Display options to the user
 echo "Select an option:"
 echo "1. Just Install AWS CLI"
 echo "2. Install and Configure AWS Profile"
