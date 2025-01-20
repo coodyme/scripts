@@ -14,14 +14,12 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Check for the required parameters
 if [ "$#" -lt 4 ]; then
-  echo "Usage: $0 <IP_ADDRESS> <SUBNET_MASK> <GATEWAY> <DNS> [INTERFACE]"
+  echo "Usage: $0 <IP_ADDRESS> <SUBNET_MASK> <GATEWAY> <DNS> <INTERFACE>"
   echo "Example: $0 192.168.1.100 255.255.255.0 192.168.1.1 1.1.1.1 ens33"
   exit 1
 fi
 
-# Parameters
 IP_ADDRESS=$1
 SUBNET_MASK=$2
 GATEWAY=$3
@@ -58,7 +56,7 @@ if [ -f $NETPLAN_FILE ]; then
   cp $NETPLAN_FILE ${NETPLAN_FILE}.bak
 fi
 
-# Write the new Netplan configuration
+echo "Write the new Netplan configuration"
 cat <<EOF >$NETPLAN_FILE
 network:
   version: 2
