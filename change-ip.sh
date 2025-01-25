@@ -3,9 +3,10 @@
 # This script changes the IP address, subnet mask, gateway, and DNS server of a network interface using Netplan.
 # ------------------------------------------------------------------------------
 # How to use:
-# 1. Save this script to a file (e.g., change-ip.sh)
-# 2. Make the script executable with the command: chmod +x change-ip.sh
-# 3. Run the script with root privileges: sudo ./change-ip.sh <IP_ADDRESS> <SUBNET_MASK> <GATEWAY> <DNS> <INTERFACE>
+# 1. Create a new file: sudo nano change-ip.sh
+# 2. Copy the contents of this script into the file and save it.
+# 3. Make the script executable with the command: sudo chmod +x change-ip.sh
+# 4. Run the script with root privileges: sudo ./change-ip.sh <IP_ADDRESS> <SUBNET_MASK> <GATEWAY> <DNS> <INTERFACE>
 # sudo ./change-ip.sh 192.168.1.100 255.255.255.0 192.168.1.1 1.1.1.1 ens3
 # ------------------------------------------------------------------------------
 

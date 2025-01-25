@@ -3,9 +3,10 @@
 # This script disables cloud-init services and prevents cloud-init from configuring the network.
 # ------------------------------------------------------------------------------
 # How to use:
-# 1. Save this script to a file (e.g., disable-cloud-init.sh)
-# 2. Make the script executable with the command: chmod +x disable-cloud-init.sh
-# 3. Run the script with root privileges: sudo ./disable-cloud-init.sh
+# 1. Create a new file: sudo nano disable-cloud-init.sh
+# 2. Copy the contents of this script into the file and save it.
+# 3. Make the script executable with the command: sudo chmod +x disable-cloud-init.sh
+# 4. Run the script with root privileges: sudo ./disable-cloud-init.sh
 # ------------------------------------------------------------------------------
 
 if [ "$EUID" -ne 0 ]; then
