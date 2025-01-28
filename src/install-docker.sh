@@ -50,5 +50,7 @@ newgrp docker
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
+echo '{"log-driver":"json-file","log-opts":{"max-size":"10m","max-file":"5"}}' | sudo tee /etc/docker/daemon.json
+
 echo "Docker installation completed successfully!"
 echo "You may need to log out and log back in for non-root Docker access."
