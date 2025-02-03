@@ -31,6 +31,7 @@ sudo apt-get purge cloud-init
 sudo rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
 
 sudo cp /etc/netplan/50-cloud-init.yaml /etc/netplan/50-cloud-init.yaml.bak
+sudo rm /etc/netplan/50-cloud-init.yaml
 
 echo "Write file to disable cloud-init network configuration..."
 sudo mkdir -p /etc/cloud/cloud.cfg.d/

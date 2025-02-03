@@ -40,7 +40,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 echo "Enabling and starting Docker service..."
 systemctl enable docker
-systemctl start docker
+systemctl start docker  
 
 echo "Verifying Docker installation..."
 docker --version
