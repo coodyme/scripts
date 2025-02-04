@@ -12,7 +12,8 @@ echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] http
 sudo apt update
 
 echo "Installing mise..."
-sudo apt install -y mise
+sudo apt install -y mise                                           
+
 
 echo "Checking mise version..."
 mise --version
